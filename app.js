@@ -1,8 +1,8 @@
 const { Client, MessageMedia } = require("whatsapp-web.js");
 const express = require("express");
 const { body, validationResult } = require("express-validator");
-// const socketIO = require('socket.io');
-const { Server } = require("socket.io");
+const socketIO = require('socket.io');
+// const { Server } = require("socket.io");
 const qrcode = require("qrcode");
 const http = require("http");
 const fs = require("fs");
@@ -15,8 +15,8 @@ const port = process.env.PORT || 8000;
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
-// const io = socketIO(server);
+// const io = new Server(server);
+const io = socketIO(server);
 
 app.use(express.json());
 app.use(
